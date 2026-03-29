@@ -1,0 +1,11 @@
+# Generated videos and temp files
+*.mp4
+progress.json
+concat_list.txt
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env

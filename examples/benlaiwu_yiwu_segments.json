@@ -1,0 +1,27 @@
+{
+  "project": "本来无一物",
+  "aspect_ratio": "9:16",
+  "frames": 121,
+  "segments": [
+    {
+      "title": "本来无一物-1-神秀作偈",
+      "prompt": "A cinematic Zen short film set in the East Mountain monastery of ancient China at night. Long silent temple corridors, rough plaster wall, dim lantern glow, faint incense smoke, wooden beams, realistic Tang dynasty Buddhist atmosphere. A senior monk in simple robes stands before the corridor wall and carefully writes a verse in elegant calligraphy by lantern light. His movement is restrained and solemn, the air is still, the monastery is silent, and the scene feels disciplined, contemplative, and historically grounded. Focus on sacred quiet, realistic fabric texture, brushed ink on pale wall, soft shadows, no modern objects, no fantasy armor, no subtitles, no watermark.",
+      "notes": "神秀夜间在廊壁题偈，重在肃静、长廊、灯火与克制动作。"
+    },
+    {
+      "title": "本来无一物-2-慧能闻偈",
+      "prompt": "A cinematic Zen short film set before dawn in the back work area of an ancient Chinese monastery. A humble young practitioner in rough plain robes quietly pounds rice in the dim monastery workroom. He hears a verse being recited from the corridor and pauses with calm awareness rather than surprise. Mist drifts lightly through the wooden passage, lantern light is low and warm, and his expression reveals silent inward clarity. Realistic historical Chinese temple architecture, contemplative pacing, restrained performance, spiritual stillness, no modern objects, no fantasy armor, no subtitles, no watermark.",
+      "notes": "慧能在后院舂米，闻偈而起觉照，不做夸张表演。"
+    },
+    {
+      "title": "本来无一物-3-代书新偈",
+      "prompt": "A poetic cinematic Zen short film in an ancient Chinese monastery at the edge of dawn. A humble practitioner calmly dictates a new verse while another person writes it onto the corridor wall in dark fresh ink. The wall already bears an earlier verse, lantern light flickers, incense smoke curls upward, and the atmosphere is intensely quiet but spiritually radiant. Emphasize the contrast between disciplined practice and sudden insight. Realistic historical detail, pale monastery wall, black calligraphy strokes, sacred stillness, restrained camera movement, no modern objects, no fantasy armor, no subtitles, no watermark.",
+      "notes": "重点是‘代书新偈’，墙上旧偈与新偈并置，形成转折。"
+    },
+    {
+      "title": "本来无一物-4-何处惹尘埃",
+      "prompt": "A contemplative cinematic Zen short film in an ancient Chinese monastery at first light. Dawn arrives over the quiet temple courtyard, faint wind moves through trees, incense smoke thins in the cool morning air, and the corridor wall with calligraphy stands in stillness. The camera slowly reveals emptiness, clarity, and dustless calm, ending on a sacred silent frame of the monastery courtyard as if awakening beyond words has already happened. Realistic Tang dynasty monastery atmosphere, elegant minimalism, poetic stillness, subtle golden dawn light, no modern objects, no fantasy armor, no subtitles, no watermark.",
+      "notes": "用清晨空庭与风过无尘做收束，形成‘何处惹尘埃’的气质落点。"
+    }
+  ]
+}
