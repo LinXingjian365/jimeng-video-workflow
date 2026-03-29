@@ -1,0 +1,49 @@
+{
+  "project": "benlaiwu-yiwu-ark",
+  "segments": [
+    {
+      "title": "本来无一物-1-神秀作偈",
+      "prompt": "Mode: Text-only. 9:16, 12s, cinematic Zen historical drama, ultra-realistic Tang dynasty monastery night scene, sacred stillness, refined calligraphy ritual. Visuals: In the long silent corridor of East Mountain monastery at night, a senior monk in plain dark robes stands before a pale rough wall and carefully writes a verse in elegant black calligraphy by warm lantern light. Incense smoke drifts slowly, timber beams and old plaster textures are visible, the camera begins with a wide still composition then slowly pushes in toward the moving brush tip and the monk's concentrated expression. Keep movement restrained, solemn, disciplined, and spiritually tense. Sound: low night wind, faint robe rustle, soft brush strokes on wall, distant wooden temple ambience, no music, no narration. End frame: fresh black ink on the pale wall, lantern flame flickering beside the finished verse. Negative constraints: no subtitles, no watermark, no modern objects, no fantasy armor, no exaggerated gestures, no neon colors.",
+      "ratio": "9:16",
+      "duration": 12,
+      "resolution": "720p",
+      "seed": 21,
+      "watermark": false,
+      "generate_audio": true,
+      "camera_fixed": false
+    },
+    {
+      "title": "本来无一物-2-慧能闻偈",
+      "prompt": "Mode: Text-only. 9:16, 12s, cinematic Zen historical drama, before-dawn monastery workroom, profound inner awakening, realistic atmosphere. Visuals: In a dim rice-pounding room behind an ancient Chinese monastery, a humble young practitioner in coarse robes quietly pounds rice before dawn. He hears a verse being recited from the corridor, pauses mid-motion, lowers the pestle, and lifts his eyes with calm inner clarity rather than surprise. Mist drifts through the wooden doorway, lantern light is faint and warm, dust floats in cold blue-gray dawn air. The camera starts close on hands and labor, then slowly tilts and pushes toward his face as awareness dawns. Sound: wooden rice-pounding rhythm, a faint distant voice reciting a verse from the corridor, low dawn wind, subtle room ambience, no modern noise, no soundtrack. End frame: still face, listening in silence, suspended between labor and awakening. Negative constraints: no subtitles, no watermark, no modern objects, no fantasy armor, no theatrical overacting.",
+      "ratio": "9:16",
+      "duration": 12,
+      "resolution": "720p",
+      "seed": 22,
+      "watermark": false,
+      "generate_audio": true,
+      "camera_fixed": false
+    },
+    {
+      "title": "本来无一物-3-代书新偈",
+      "prompt": "Mode: Text-only. 9:16, 12s, poetic cinematic Zen scene, edge of dawn, sudden insight made visible, realistic Tang monastery corridor. Visuals: In the monastery corridor at the edge of dawn, a humble practitioner calmly dictates a new verse while another person writes it onto the wall in dark fresh ink beside the earlier verse. Lantern light flickers out as dawn begins to glow, incense smoke curls upward, and the camera moves with slow reverence from the speaker's still face to the wall where the new words appear. Emphasize the contrast between disciplined gradual practice and sudden insight, but keep all emotions restrained, luminous, and inward. Sound: soft voice dictating a short verse in calm tone, brush writing on wall, faint dawn birds beginning outside, quiet temple atmosphere, no music. End frame: old verse and new verse sharing the wall in silence. Negative constraints: no subtitles, no watermark, no modern objects, no fantasy costume, no melodrama, no flashy effects.",
+      "ratio": "9:16",
+      "duration": 12,
+      "resolution": "720p",
+      "seed": 23,
+      "watermark": false,
+      "generate_audio": true,
+      "camera_fixed": false
+    },
+    {
+      "title": "本来无一物-4-何处惹尘埃",
+      "prompt": "Mode: Text-only. 9:16, 12s, contemplative Zen visual poem, ancient monastery at first light, emptiness and clarity beyond words, ultra-realistic sacred stillness. Visuals: Dawn arrives over a quiet Tang dynasty monastery courtyard. Faint wind moves through trees and prayer cloth, incense smoke thins in the cool morning air, the corridor wall with fresh calligraphy stands in stillness, and the camera glides slowly through empty space to reveal dustless calm and awakened silence. No one speaks. The final composition should feel spacious, clear, and profoundly peaceful, with pale gold sunrise light touching old wood, stone, and courtyard ground. Sound: dawn wind, distant birds, soft temple ambience, the last fading trace of night insects, no music, no narration. End frame: the courtyard in silence, as if awakening has already happened. Negative constraints: no subtitles, no watermark, no modern objects, no fantasy elements, no exaggerated movement, no clutter.",
+      "ratio": "9:16",
+      "duration": 12,
+      "resolution": "720p",
+      "seed": 24,
+      "watermark": false,
+      "generate_audio": true,
+      "camera_fixed": false
+    }
+  ]
+}
