@@ -18,6 +18,23 @@
 
 ## Workflows
 
+### 0) 即梦网页会员版自动化
+
+适合：
+- 单条试水
+- 优先消耗即梦会员积分
+- 不走 API 按量计费
+
+核心脚本：
+- `jimeng_web_automation.py`
+
+当前能力：
+- 自动进入视频生成面板
+- 自动填 prompt
+- 自动设置比例与时长
+- 自动提交生成任务
+- 生成状态可写入 `web_progress.json`
+
 ### 1) 即梦视觉 API / 3.0 Pro
 
 适合：
@@ -66,6 +83,15 @@ ARK_API_KEY=...
 > 改完后重启 OpenClaw。
 
 ## Usage
+
+### 单条视频生成（即梦网页会员版）
+
+```bash
+python jimeng_web_automation.py \
+  --prompt "A cinematic Zen short film..." \
+  --ratio 9:16 \
+  --duration 12s
+```
 
 ### 单条视频生成（即梦视觉 API）
 
@@ -123,6 +149,7 @@ python ark_seedance_batch_runner.py \
 
 ```
 jimeng-video-workflow/
+├── jimeng_web_automation.py           # 即梦网页会员版：自动进入生成面板、填 prompt、设参数、提交任务
 ├── jimeng_video_api_minimal.py        # 即梦视觉 API：单条视频生成 + 火山签名
 ├── jimeng_batch_runner.py             # 即梦视觉 API：批量生成 + 进度追踪 + 弹窗通知
 ├── ark_seedance_video.py              # Ark Seedance 1.5 Pro：单条视频生成
