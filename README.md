@@ -1,48 +1,73 @@
 # Jimeng Video Workflow
 
-基于火山引擎 / 即梦 AI 的视频生成工作流。支持文生视频、多段批量生成、自动拼接。
+基于火山引擎 / 即梦 AI 的视频生成工作流，现已同时支持两条路线：
+
+- **即梦视觉 API / 3.0 Pro 路线**：已打通，适合稳定批量、多段故事片工作流
+- **火山方舟 Ark / Seedance 1.5 Pro 路线**：已打通，适合更长单段（如 10-12s）与高质量测试片
 
 ## Features
 
-- 🎬 通过火山引擎 API 调用即梦 Seedance 3.0 Pro 进行视频生成
+- 🎬 调用即梦视觉 API 生成视频
+- 🚀 调用 Ark Seedance 1.5 Pro 生成更长单段视频
 - 📦 批量多段生成，支持故事级视频制作
 - 🔗 ffmpeg 自动拼接多段视频为完整故事片
 - 📊 实时进度文件（progress.json）追踪生成状态
 - 🔔 Windows 弹窗通知，每段完成自动提醒
-- 🔐 火山引擎 AK/SK HMAC-SHA256 签名鉴权
+- 🔐 即梦视觉 API：AK/SK HMAC-SHA256 签名鉴权
+- 🔑 Ark API：Bearer Token (`ARK_API_KEY`) 鉴权
+
+## Workflows
+
+### 1) 即梦视觉 API / 3.0 Pro
+
+适合：
+- 现有稳定生产线
+- 多段故事生成与自动拼接
+- 兼容原先已写好的 prompt / batch 流程
+
+核心脚本：
+- `jimeng_video_api_minimal.py`
+- `jimeng_batch_runner.py`
+
+### 2) Ark Seedance 1.5 Pro
+
+适合：
+- 更长单段（如 10-12s）
+- 高质量测试片
+- 未来升级到更高版本的过渡路径
+
+核心脚本：
+- `ark_seedance_video.py`
+- `ark_seedance_batch_runner.py`
 
 ## Requirements
 
 - Python 3.10+
 - [ffmpeg](https://ffmpeg.org/) (用于视频拼接)
-- 火山引擎账号 + AccessKey / SecretKey
-- 即梦 AI 视频生成服务已开通
+- 火山引擎账号
+- 对应视频生成模型已开通
 
-## Setup
+## Environment Variables
 
-### 1. 安装 Python 依赖
-
-```bash
-pip install requests
-```
-
-### 2. 配置环境变量
+### 即梦视觉 API
 
 ```bash
-# Linux / macOS
-export VOLCENGINE_ACCESS_KEY="your_access_key"
-export VOLCENGINE_SECRET_KEY="your_secret_key"
-
-# Windows (永久)
-setx VOLCENGINE_ACCESS_KEY "your_access_key"
-setx VOLCENGINE_SECRET_KEY "your_secret_key"
-
-# OpenClaw 用户推荐写入 ~/.openclaw/.env
+VOLCENGINE_ACCESS_KEY=...
+VOLCENGINE_SECRET_KEY=...
 ```
+
+### Ark Seedance 1.5 Pro
+
+```bash
+ARK_API_KEY=...
+```
+
+> 在这台机器上，推荐长期写入：`C:\Users\Administrator\.openclaw\.env`
+> 改完后重启 OpenClaw。
 
 ## Usage
 
-### 单条视频生成
+### 单条视频生成（即梦视觉 API）
 
 ```bash
 python jimeng_video_api_minimal.py \
@@ -52,11 +77,20 @@ python jimeng_video_api_minimal.py \
   --frames 121
 ```
 
-### 批量多段生成 + 自动拼接
+### 单条视频生成（Ark Seedance 1.5 Pro）
 
-1. 创建分段配置文件（参考 `examples/benlaiwu_yiwu_segments.json`）
+```bash
+python ark_seedance_video.py \
+  --model doubao-seedance-1-5-pro-251215 \
+  --title "ark-test" \
+  --prompt "A cinematic Zen short film..." \
+  --ratio 9:16 \
+  --duration 12 \
+  --resolution 720p \
+  --generate-audio
+```
 
-2. 运行批量生成并自动拼接：
+### 批量多段生成 + 自动拼接（即梦视觉 API）
 
 ```bash
 python jimeng_batch_runner.py \
@@ -64,50 +98,61 @@ python jimeng_batch_runner.py \
   --concat
 ```
 
-3. 查看进度：打开输出目录下的 `progress.json`
-
-### 手动拼接
+### 批量多段生成 + 自动拼接（Ark Seedance 1.5 Pro）
 
 ```bash
-python ffmpeg_concat_jimeng.py \
-  --input-dir output_segments_dir \
-  --output final_video.mp4
+python ark_seedance_batch_runner.py \
+  --config examples/benlaiwu_yiwu_ark_segments.json \
+  --concat
 ```
+
+## Progress Tracking
+
+批量生成时，会在输出目录下生成：
+
+- `progress.json`
+
+里面会记录：
+- 总段数
+- 已完成段数
+- 当前正在生成哪一段
+- 当前状态（generating / all_segments_done / concat_done）
+- 拼接后的最终视频路径
 
 ## File Structure
 
 ```
 jimeng-video-workflow/
-├── jimeng_video_api_minimal.py   # 核心：单条视频生成 + 火山签名
-├── jimeng_batch_runner.py        # 批量生成 + 进度追踪 + 弹窗通知
-├── ffmpeg_concat_jimeng.py       # ffmpeg 自动拼接
-├── notify_popup.py               # Windows 弹窗通知
+├── jimeng_video_api_minimal.py        # 即梦视觉 API：单条视频生成 + 火山签名
+├── jimeng_batch_runner.py             # 即梦视觉 API：批量生成 + 进度追踪 + 弹窗通知
+├── ark_seedance_video.py              # Ark Seedance 1.5 Pro：单条视频生成
+├── ark_seedance_batch_runner.py       # Ark Seedance 1.5 Pro：批量生成 + 进度追踪 + 弹窗通知
+├── ffmpeg_concat_jimeng.py            # ffmpeg 自动拼接
+├── notify_popup.py                    # Windows 弹窗通知
 ├── examples/
-│   └── benlaiwu_yiwu_segments.json  # 示例：《本来无一物》四段配置
+│   ├── benlaiwu_yiwu_segments.json        # 即梦视觉 API 示例：《本来无一物》四段
+│   └── benlaiwu_yiwu_ark_segments.json    # Ark Seedance 1.5 Pro 示例：《本来无一物》四段
 └── README.md
 ```
 
-## API Reference
+## Current Status
 
-### 火山引擎视频生成 API
+### 已打通
+- 即梦视觉 API / 3.0 Pro
+- Ark Seedance 1.5 Pro
+- 多段批量生成
+- 自动拼接
+- 进度文件与弹窗通知
+- GitHub 项目同步
 
-- **Host**: `visual.volcengineapi.com`
-- **提交任务**: `Action=CVSync2AsyncSubmitTask&Version=2022-08-31`
-- **查询结果**: `Action=CVSync2AsyncGetResult&Version=2022-08-31`
-- **Region**: `cn-north-1`
-- **Service**: `cv`
-- **req_key**: `jimeng_ti2v_v30_pro`
+### 待进一步优化
+- Seedance 2.0（当前账号仅可体验，不支持 API）
+- 双路线效果对比与自动选路
+- 更强的项目模板与素材管理
 
-### 请求参数
+## Repository
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| req_key | string | 能力标识，固定值 |
-| prompt | string | 视频描述 |
-| image_urls | array | 参考图 URL（可选） |
-| aspect_ratio | string | 比例，如 9:16、16:9 |
-| frames | int | 帧数 |
-| seed | int | 随机种子，-1 为随机 |
+- GitHub: https://github.com/LinXingjian365/jimeng-video-workflow
 
 ## License
 
