@@ -177,6 +177,31 @@ jimeng-video-workflow/
 - 双路线效果对比与自动选路
 - 更强的项目模板与素材管理
 
+## Optional Research Tooling
+
+### Search X / Twitter (`search-x` skill)
+
+适合：
+- 做热点选题研究
+- 搜用户真实反馈与讨论
+- 为视频选题、风格、传播话题补充灵感
+
+当前环境已兼容：
+- `XAI_API_KEY` 可放入 `C:\Users\Administrator\.openclaw\.env`
+- `search-x` 脚本已调整为优先读取 OpenClaw 环境与配置
+
+典型用法：
+
+```bash
+node C:\Users\Administrator\.openclaw\workspace\skills\search-x\scripts\search.js "白丝裤袜"
+node C:\Users\Administrator\.openclaw\workspace\skills\search-x\scripts\search.js --days 7 --compact "AI video editing"
+node C:\Users\Administrator\.openclaw\workspace\skills\search-x\scripts\search.js --links-only "Remotion best practices"
+```
+
+说明：
+- 这颗 skill 不替代 OpenClaw 内置 `x_search` 工具
+- 它更适合当作可复用的脚本化搜索入口，用来补你的项目工具链
+
 ## Repository
 
 - GitHub: https://github.com/LinXingjian365/jimeng-video-workflow
